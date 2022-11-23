@@ -3,7 +3,6 @@ import json
 
 import aiosqlite
 
-
 AVAILABLE_POINTS = [
     "1", "2", "3", "5", "8",
     "13", "20", "40", "❔", "☕",
@@ -40,7 +39,6 @@ class Vote:
 
 
 class Game:
-
     OP_RESTART = "restart"
     OP_RESTART_NEW = "restart-new"
     OP_REVEAL = "reveal"
@@ -59,8 +57,8 @@ class Game:
         self.votes[self._initiator_str(initiator)].set(point)
 
     def get_text(self):
-        result = "{} for:\n{}\nInitiator: {}".format(
-            "Vote" if not self.revealed else "Results",
+        result = "{} for:\n{}\nИнициатор: {}".format(
+            "Голос" if not self.revealed else "Результаты",
             self.text, self._initiator_str(self.initiator)
         )
         if self.votes:
@@ -70,7 +68,11 @@ class Game:
                 )
                 for user_id, vote in sorted(self.votes.items())
             )
-            result += "\n\nCurrent votes:\n{}".format(votes_str)
+            result += "\n\nТекущие оценки:\n{}".format(votes_str)
+        all_num_votes = list(filter(lambda x: x.isdigit(), [vote.point for user_id, vote in self.votes.items()]))
+        all_votes = sum([int(x) for x in all_num_votes])
+        if len(self.votes) > 0 and self.revealed:
+            result += "\n\nСредняя оценка: {}".format(all_votes / len(all_num_votes))
         return result
 
     def get_send_kwargs(self):
