@@ -95,26 +95,14 @@ class Game:
                 [
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Рестарт",
-                        "callback_data": "{}-click-{}".format(self.OP_RESTART, self.vote_id),
-                    },
-                    {
-                        "type": "InlineKeyboardButton",
-                        "text": "Рестарт 🆕",
-                        "callback_data": "{}-click-{}".format(self.OP_RESTART_NEW, self.vote_id),
-                    },
-                ],
-                [
-                    {
-                        "type": "InlineKeyboardButton",
                         "text": "Вскрываемся",
                         "callback_data": "{}-click-{}".format(self.OP_REVEAL, self.vote_id),
                     },
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Вскрываемся 🆕",
-                        "callback_data": "{}-click-{}".format(self.OP_REVEAL_NEW, self.vote_id),
-                    },
+                        "text": "Рестарт",
+                        "callback_data": "{}-click-{}".format(self.OP_RESTART, self.vote_id),
+                    }
                 ],
             ],
         }

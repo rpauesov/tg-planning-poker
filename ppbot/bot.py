@@ -10,14 +10,13 @@ from ppbot.game import GameRegistry, Game
 TOKEN = ''
 DB_PATH = os.environ.get("PP_BOT_DB_PATH", os.path.expanduser("~/.tg_pp_bot.db"))
 GREETING = """
-Use 
-/poker task url or description 
-to start game.
+Для начала голосования наберите команду
+/poker [название таски или URL]
 
-Multiline is also supported
+Есть поддержка мультилайна
 /poker line1
 line2
-Currently there is only one scale: 1, 2, 3, 5, 8, 13, 20, 40, ❔, ☕
+Сейчас есть поддержка размерности по Фибоначчи: 1, 2, 3, 5, 8, 13, 20, 40, ❔, ☕
 """
 
 bot = Bot(TOKEN)
