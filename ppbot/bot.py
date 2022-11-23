@@ -7,7 +7,7 @@ from aiotg import Bot, Chat, CallbackQuery, BotApiError
 from ppbot.utils import init_logging
 from ppbot.game import GameRegistry, Game
 
-TOKEN = ''
+TOKEN = '5953656846:AAFWGIEhuxO60zImCwU3ofUOshXWI38LTC4'
 DB_PATH = os.environ.get("PP_BOT_DB_PATH", os.path.expanduser("~/.tg_pp_bot.db"))
 GREETING = """
 Use 

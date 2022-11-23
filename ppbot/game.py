@@ -57,8 +57,8 @@ class Game:
         self.votes[self._initiator_str(initiator)].set(point)
 
     def get_text(self):
-        result = "{} for:\n{}\nИнициатор: {}".format(
-            "Голос" if not self.revealed else "Результаты",
+        result = "{} по задаче:\n{}\nИнициатор: {}".format(
+            "Голосование" if not self.revealed else "Результаты голосования",
             self.text, self._initiator_str(self.initiator)
         )
         if self.votes:
@@ -95,24 +95,24 @@ class Game:
                 [
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Restart",
+                        "text": "Рестарт",
                         "callback_data": "{}-click-{}".format(self.OP_RESTART, self.vote_id),
                     },
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Restart 🆕",
+                        "text": "Рестарт 🆕",
                         "callback_data": "{}-click-{}".format(self.OP_RESTART_NEW, self.vote_id),
                     },
                 ],
                 [
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Open Cards",
+                        "text": "Вскрываемся",
                         "callback_data": "{}-click-{}".format(self.OP_REVEAL, self.vote_id),
                     },
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Open Cards 🆕",
+                        "text": "Вскрываемся 🆕",
                         "callback_data": "{}-click-{}".format(self.OP_REVEAL_NEW, self.vote_id),
                     },
                 ],
