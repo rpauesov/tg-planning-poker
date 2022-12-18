@@ -62,6 +62,7 @@ class Game:
             self.text, self._initiator_str(self.initiator)
         )
         if self.votes:
+            result += "\n\nВсего голосов: " + str(len(self.votes.items()))
             votes_str = "\n".join(
                 "{:3s} {}".format(
                     vote.point if self.revealed else vote.masked, user_id
@@ -73,6 +74,12 @@ class Game:
         all_votes = sum([int(x) for x in all_num_votes])
         if len(self.votes) > 0 and self.revealed:
             result += "\n\nСредняя оценка: {}".format(all_votes / len(all_num_votes))
+            result += "\n\nРаспределение по голосам:\n"
+            for point in AVAILABLE_POINTS:
+                point_votes = list(filter(lambda p: p == point, [vote.point for user_id, vote in self.votes.items()]))
+                count = len(point_votes)
+                if count > 0:
+                    result += f"\n{point} - " + "🟩" * count + f" ({count})"
         return result
 
     def get_send_kwargs(self):
